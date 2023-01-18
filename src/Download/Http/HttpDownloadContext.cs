@@ -18,6 +18,11 @@ namespace Download.Http
     {
         public List<HttpRangeDownloadContext> Contexts { get; set; }
 
+        public HttpRangesDownloadContext()
+        {
+            Contexts = new List<HttpRangeDownloadContext>();
+        }
+
         public HttpRangesDownloadContext(IEnumerable<DownloadRange> ranges)
         {
             Contexts = new List<HttpRangeDownloadContext>();

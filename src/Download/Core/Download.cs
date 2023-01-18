@@ -11,6 +11,10 @@ namespace Download.Core
     /// </summary>
     public abstract partial class Download : IDownload
     {
+        #region Static
+        public static DownloadFactory Factory => new DownloadFactory();
+        #endregion
+
         #region Fields
         private readonly object _lock;
 

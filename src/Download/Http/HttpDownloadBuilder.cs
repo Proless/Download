@@ -1,5 +1,6 @@
 ﻿#nullable enable
 using Download.Builder;
+using Download.Core;
 using Download.Output;
 using System;
 using System.Net.Http;
@@ -14,6 +15,8 @@ namespace Download.Http
         protected HttpClient HttpClient;
 
         protected Action<HttpDownloadRequest>? RequestConfigurator;
+
+        protected DownloadRange? Range;
         #endregion
 
         #region Constructor
@@ -25,6 +28,11 @@ namespace Download.Http
         #endregion
 
         #region Methods
+        public HttpDownloadBuilder WithRange(DownloadRange value)
+        {
+            Range = value;
+            return this;
+        }
         public HttpDownloadBuilder WithUserAgent(string value)
         {
             UserAgent = value;
@@ -46,7 +54,9 @@ namespace Download.Http
         #region Protected
         protected override HttpDownload InternalBuild(Uri uri)
         {
-            return new HttpDownload(uri, Output, HttpClient, DisposeClient);
+            return Range.HasValue
+                ? new HttpRangeDownload(uri, Range.Value, Output, HttpClient, DisposeClient)
+                : new HttpDownload(uri, Output, HttpClient, DisposeClient);
         }
         protected override void SetConfigurations(HttpDownload download)
         {

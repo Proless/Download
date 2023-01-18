@@ -32,7 +32,6 @@ namespace Download.Http
         private string? _userAgent;
         private int _bufferSize;
         private int _maxRetries;
-
         #endregion
 
         #region Configuration

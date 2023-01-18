@@ -1,12 +1,7 @@
-﻿using Download.Http;
-
-namespace Download
+﻿namespace Download
 {
-    public static class DownloadFactory
+    public class DownloadFactory
     {
-        public static HttpDownloadBuilder Http()
-        {
-            return new HttpDownloadBuilder();
-        }
+
     }
 }

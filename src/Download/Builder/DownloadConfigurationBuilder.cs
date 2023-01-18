@@ -22,7 +22,7 @@ namespace Download.Builder
             Configuration.MaxRetries = value;
             return (T)this;
         }
-        public virtual T ForceDownload(bool value)
+        public virtual T ForceDownload(bool value = true)
         {
             Configuration.ForceDownload = value;
             return (T)this;
