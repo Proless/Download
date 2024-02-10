@@ -11,7 +11,7 @@ namespace Download.Test.Server.Controllers
         [HttpGet]
         public IActionResult Get([FromBody] TestConfig config)
         {
-
+            return Ok();
         }
     }
 }

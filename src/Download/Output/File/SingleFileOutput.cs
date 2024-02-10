@@ -29,7 +29,7 @@ namespace Download.Output.File
         {
             if (_download != null && download != _download)
             {
-                throw new InvalidOperationException("The output is can't be shared between multiple download instances");
+                throw new InvalidOperationException("The output can't be shared between multiple download instances");
             }
 
             _download ??= download;
